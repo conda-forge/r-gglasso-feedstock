@@ -1,4 +1,4 @@
-{% set version = '1.4' %}
+{% set version = '1.5' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,21 +10,21 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gglasso_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gglasso/gglasso_{{ version }}.tar.gz
-  sha256: a460e80d926eabdd327f54823e80f5cd28d4221e9cff1d78242020ede7739f64
+  sha256: b2ba0079efc25781cfddc8914957bab0ca2ab0a90e0076b80fe493620353808a
 
 build:
   merge_build_host: True  # [win]
-  number: 1002
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('fortran') }}  # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
-    - {{ compiler('m2w64_fortran') }}        # [win]
+    - {{ compiler('fortran') }}        # [not win]
+    - {{ compiler('m2w64_fortran') }}  # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
     - {{posix}}sed               # [win]
@@ -49,14 +49,31 @@ about:
     Huberized SVM and squared SVM. The package is an implementation of Yang, Y. and
     Zou, H. (2015) DOI: <doi:10.1007/s11222-014-9498-5>.'
   license_family: GPL2
-  license_file: '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+
+# Package: gglasso
+# Title: Group Lasso Penalized Learning Using a Unified BMD Algorithm
+# Version: 1.5
+# Date: 2020-3-01
+# Authors@R: c( person("Yi", "Yang", email = "yi.yang6@mcgill.ca", role = c("aut", "cre"), comment = "http://www.math.mcgill.ca/yyang/"), person("Hui", "Zou", email = "hzou@stat.umn.edu", role = c("aut"), comment = "http://users.stat.umn.edu/~zouxx019/"), person("Sahir", "Bhatnagar", email = "sahir.bhatnagar@gmail.com", role = c("aut"), comment = "http://sahirbhatnagar.com/") )
+# Maintainer: Yi Yang <yi.yang6@mcgill.ca>
+# Description: A unified algorithm, blockwise-majorization-descent (BMD), for efficiently computing the solution paths of the group-lasso penalized least squares, logistic regression, Huberized SVM and squared SVM. The package is an implementation of Yang, Y. and Zou, H. (2015) DOI: <doi:10.1007/s11222-014-9498-5>.
+# License: GPL-2
+# Imports: methods
+# URL: https://github.com/emeryyi/gglasso
+# BugReports: https://github.com/emeryyi/gglasso/issues
+# Packaged: 2020-03-18 05:48:51 UTC; yiyang
+# Repository: CRAN
+# Date/Publication: 2020-03-18 07:00:08 UTC
+# RoxygenNote: 7.0.2
+# Suggests: testthat, knitr, rmarkdown
+# Encoding: UTF-8
+# LazyData: TRUE
+# VignetteBuilder: knitr
+# NeedsCompilation: yes
+# Author: Yi Yang [aut, cre] (http://www.math.mcgill.ca/yyang/), Hui Zou [aut] (http://users.stat.umn.edu/~zouxx019/), Sahir Bhatnagar [aut] (http://sahirbhatnagar.com/)
