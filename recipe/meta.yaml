@@ -14,7 +14,7 @@ source:
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 2
   rpaths:
     - lib/R/lib/
     - lib/
@@ -43,7 +43,7 @@ test:
 
 about:
   home: https://github.com/emeryyi/gglasso
-  license: GPL-2
+  license: GPL-2.0-only
   summary: 'A unified algorithm, blockwise-majorization-descent (BMD), for efficiently computing
     the solution paths of the group-lasso penalized least squares, logistic regression,
     Huberized SVM and squared SVM. The package is an implementation of Yang, Y. and
