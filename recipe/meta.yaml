@@ -1,4 +1,4 @@
-{% set version = '1.5' %}
+{% set version = "1.5.1" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/gglasso_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/gglasso/gglasso_{{ version }}.tar.gz
-  sha256: b2ba0079efc25781cfddc8914957bab0ca2ab0a90e0076b80fe493620353808a
+  sha256: 2ee61c85b3ab5aa6f6bb4c32aaec972907f3948f64148626ae53917339745abd
 
 build:
-  merge_build_host: True  # [win]
-  number: 4
+  merge_build_host: true  # [win]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -45,10 +45,7 @@ test:
 about:
   home: https://github.com/emeryyi/gglasso
   license: GPL-2.0-only
-  summary: 'A unified algorithm, blockwise-majorization-descent (BMD), for efficiently computing
-    the solution paths of the group-lasso penalized least squares, logistic regression,
-    Huberized SVM and squared SVM. The package is an implementation of Yang, Y. and
-    Zou, H. (2015) DOI: <doi:10.1007/s11222-014-9498-5>.'
+  summary: 'A unified algorithm, blockwise-majorization-descent (BMD), for efficiently computing the solution paths of the group-lasso penalized least squares, logistic regression, Huberized SVM and squared SVM. The package is an implementation of Yang, Y. and Zou, H. (2015) DOI: <doi:10.1007/s11222-014-9498-5>.'
   license_family: GPL2
   license_file:
     - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
